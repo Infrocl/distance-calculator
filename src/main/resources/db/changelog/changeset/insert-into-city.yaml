@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: marina
+      changes:
+        - insert:
+            tableName: City
+            columns:
+              - column:
+                  name: Name
+                  value: "Moscow"
+              - column:
+                  name: Latitude
+                  value: 55.751244
+              - column:
+                  name: Longitude
+                  value: 37.618423
+        - insert:
+            tableName: City
+            columns:
+              - column:
+                  name: Name
+                  value: "New York"
+              - column:
+                  name: Latitude
+                  value: 40.730610
+              - column:
+                  name: Longitude
+                  value: -73.935242
+        - insert:
+            tableName: City
+            columns:
+              - column:
+                  name: Name
+                  value: "Tokyo"
+              - column:
+                  name: Latitude
+                  value: 35.652832
+              - column:
+                  name: Longitude
+                  value: 139.839478
