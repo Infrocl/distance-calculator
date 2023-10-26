@@ -7,6 +7,13 @@ databaseChangeLog:
             tableName: Distance
             columns:
               - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
                   name: From_city_id
                   type: BIGINT
                   constraints:
