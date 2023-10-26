@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: marina
+      changes:
+        - createTable:
+            tableName: City
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+              - column:
+                  name: Name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Latitude
+                  type: DECIMAL(10,8)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Longitude
+                  type: DECIMAL(11,8)
+                  constraints:
+                    nullable: false
+
+
+
+

@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: marina
+      changes:
+        - createTable:
+            tableName: Distance
+            columns:
+              - column:
+                  name: From_city_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_from_city_distance
+                    referencedTableName: City
+                    referencedColumnNames: id
+              - column:
+                  name: To_city_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_to_city_distance
+                    referencedTableName: City
+                    referencedColumnNames: id
+              - column:
+                  name: Distance
+                  type: DECIMAL(9,6)
+                  constraints:
+                    nullable: false
