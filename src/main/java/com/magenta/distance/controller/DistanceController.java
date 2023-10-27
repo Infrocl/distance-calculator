@@ -17,4 +17,9 @@ public class DistanceController {
     public double calculateDistance(@PathVariable long fromId, @PathVariable long toId) {
         return distanceService.calculateDistance(fromId, toId);
     }
+
+    @GetMapping("/{fromId}/{toId}/matrix")
+    public double getDistance(@PathVariable long fromId, @PathVariable long toId) {
+        return distanceService.getDistance(fromId, toId);
+    }
 }

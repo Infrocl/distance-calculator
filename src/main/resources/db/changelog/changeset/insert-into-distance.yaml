@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: marina
+      changes:
+        - insert:
+            tableName: Distance
+            columns:
+              - column:
+                  name: From_city_id
+                  value: 1
+              - column:
+                  name: To_city_id
+                  value: 2
+              - column:
+                  name: Distance
+                  value: 7506
+        - insert:
+            tableName: Distance
+            columns:
+              - column:
+                  name: From_city_id
+                  value: 2
+              - column:
+                  name: To_city_id
+                  value: 3
+              - column:
+                  name: Distance
+                  value: 10845

@@ -26,4 +26,8 @@ public class DistanceService {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return earthRadius * c;
     }
+
+    public double getDistance(long fromCityId, long toCityId) {
+        return distanceRepository.findDistanceByCityId(fromCityId, toCityId);
+    }
 }

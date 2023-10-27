@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class CityPojo {
     private long id;
+    private String name;
     private double longitude;
     private double latitude;
 

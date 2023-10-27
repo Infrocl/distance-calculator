@@ -29,6 +29,6 @@ databaseChangeLog:
                     referencedColumnNames: id
               - column:
                   name: Distance
-                  type: DECIMAL(9,6)
+                  type: DECIMAL(9,4)
                   constraints:
                     nullable: false
