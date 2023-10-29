@@ -1,10 +1,18 @@
 package com.magenta.distance.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.magenta.distance.entity.Distance;
 import com.magenta.distance.pojo.CityPojo;
+import com.magenta.distance.pojo.DistanceList;
 import com.magenta.distance.repository.CityRepository;
 import com.magenta.distance.repository.DistanceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +37,16 @@ public class DistanceService {
 
     public double getDistance(long fromCityId, long toCityId) {
         return distanceRepository.findDistanceByCityId(fromCityId, toCityId);
+    }
+
+    public void loadDistancesFromXml(InputStream inputStream) {
+        ObjectMapper objectMapper = new XmlMapper();
+        try {
+            DistanceList distanceList = objectMapper.readValue(inputStream, DistanceList.class);
+            List<Distance> distances = distanceList.getDistances();
+            distanceRepository.saveAll(distances);
+        } catch (IOException e) {
+            throw new RuntimeException("Ошибка при парсинге XML", e);
+        }
     }
 }
