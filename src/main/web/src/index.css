@@ -1,0 +1,38 @@
+body {
+  padding: 50px 200px 50px 110px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: Snow;
+}
+
+.calc-label {
+  margin-left: 23px;
+  margin-top: 10px;
+  margin-right: 23px;
+}
+
+div{text-align:center;
+padding: 20px;}
+
+.item {
+  
+  margin-top: 10px;
+  width: 15%;
+}
+
+.upload {
+  margin-top: 10px;
+}
+
+.addButton {
+  margin: 15px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
