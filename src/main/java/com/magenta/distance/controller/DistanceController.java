@@ -5,26 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/distance")
 public class DistanceController {
     @Autowired
     DistanceService distanceService;
-
-    @GetMapping("/{fromId}/{toId}/crowflight")
-    public double calculateDistance(@PathVariable long fromId, @PathVariable long toId) {
-        return distanceService.calculateDistance(fromId, toId);
-    }
-
-    @GetMapping("/{fromId}/{toId}/matrix")
-    public double getDistance(@PathVariable long fromId, @PathVariable long toId) {
-        return distanceService.getDistance(fromId, toId);
-    }
 
     @PostMapping("/upload")
     public ResponseEntity<Void> uploadXmlFile(@RequestParam("file") MultipartFile file) {
