@@ -1,9 +1,0 @@
-databaseChangeLog:
-  - include:
-      file: db/changelog/changeset/create-city-table.yaml
-  - include:
-      file: db/changelog/changeset/create-distance-table.yaml
-  - include:
-      file: db/changelog/changeset/insert-into-city.yaml
-  - include:
-      file: db/changelog/changeset/insert-into-distance.yaml

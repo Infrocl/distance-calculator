@@ -2,9 +2,9 @@ package com.magenta.distance.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.magenta.distance.entity.City;
 import com.magenta.distance.entity.Distance;
-import com.magenta.distance.pojo.CityPojo;
-import com.magenta.distance.pojo.DistanceList;
+import com.magenta.distance.pojo.*;
 import com.magenta.distance.repository.CityRepository;
 import com.magenta.distance.repository.DistanceRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,12 +39,21 @@ public class DistanceService {
         return distanceRepository.findDistanceByCityId(fromCityId, toCityId);
     }
 
-    public void loadDistancesFromXml(InputStream inputStream) {
+    public void loadFromXml(String dataType, InputStream inputStream) {
         ObjectMapper objectMapper = new XmlMapper();
         try {
-            DistanceList distanceList = objectMapper.readValue(inputStream, DistanceList.class);
-            List<Distance> distances = distanceList.getDistances();
-            distanceRepository.saveAll(distances);
+            if (dataType.equals("City")) {
+                CityList cityList = objectMapper.readValue(inputStream, CityList.class);
+                List<City> cities = cityList.getCities();
+                cityRepository.saveAll(cities);
+            } else if (dataType.equals("Distance")) {
+                DistanceList distanceList= objectMapper.readValue(inputStream, DistanceList.class);
+                List<Distance> distances = distanceList.getDistances();
+                distanceRepository.saveAll(distances);
+            } else {
+                throw new IllegalArgumentException("Неверный тип данных");
+            }
+
         } catch (IOException e) {
             throw new RuntimeException("Ошибка при парсинге XML", e);
         }

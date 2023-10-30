@@ -25,15 +25,4 @@ public class CityService {
         }
         return map;
     }
-
-    public void loadCitiesFromXml(InputStream inputStream) {
-        ObjectMapper objectMapper = new XmlMapper();
-        try {
-            CityList cityList = objectMapper.readValue(inputStream, CityList.class);
-            List<City> cities = cityList.getCities();
-            cityRepository.saveAll(cities);
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка при парсинге XML", e);
-        }
-    }
 }

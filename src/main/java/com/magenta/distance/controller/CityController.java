@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedInputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -29,18 +29,15 @@ public class CityController {
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<Void> uploadXmlFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            throw new IllegalArgumentException("Файл не был загружен");
+    public ResponseEntity<Void> uploadXmlFile(@RequestParam("type") String dataType, @RequestPart("file") MultipartFile file){
+        try {
+            InputStream inputStream = file.getInputStream();
+            distanceService.loadFromXml(dataType, inputStream);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("Ошибка при загрузке файла!");
         }
 
-        try {
-            InputStream inputStream = new BufferedInputStream(file.getInputStream());
-            cityService.loadCitiesFromXml(inputStream);
-            return ResponseEntity.ok().build();
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка при чтении файла", e);
-        }
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/calculate")
